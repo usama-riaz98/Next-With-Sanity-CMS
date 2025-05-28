@@ -1,4 +1,3 @@
-// src/components/sections/HeroSection.tsx
 import type { SanityImage } from '@/sanity/types';
 import SanityImageBlock from '../utility/SanityImageBlock';
 

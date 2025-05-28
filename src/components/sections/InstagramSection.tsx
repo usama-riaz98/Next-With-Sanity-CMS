@@ -1,4 +1,3 @@
-// src/components/sections/InstagramSection.tsx
 import type { SanityImage } from '@/sanity/types';
 import Link from 'next/link';
 import SanityImageBlock from '../utility/SanityImageBlock';
