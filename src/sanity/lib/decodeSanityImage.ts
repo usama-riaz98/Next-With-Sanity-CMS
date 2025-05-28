@@ -4,7 +4,7 @@ import urlFor from './urlFor';
 const pattern = /^image-([a-f0-9]+)-(\d+x\d+)-(\w+)$/;
 
 export default function processImage(source: SanityImage) {
-  const id = source.asset._ref as string;
+  const id = source.asset.url as string;
 
   const match = pattern.exec(id);
   if (!match) {
@@ -15,7 +15,7 @@ export default function processImage(source: SanityImage) {
   const [width, height] = dimensions.split('x').map((v) => parseInt(v, 10));
 
   return {
-    url: urlFor(source).url(),
+    url: urlFor(source),
     alt: source.alt,
     assetId,
     dimensions: { width, height },
