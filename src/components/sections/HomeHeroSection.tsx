@@ -16,7 +16,7 @@ export default function HomeHeroSection({ backgroundImage }: HomeHeroSectionProp
       <SanityImageBlock fill priority image={backgroundImage} className='z-0 object-cover' />
       <div
         className='absolute inset-0 z-10'
-        style={{ background: 'linear-gradient(to bottom, #161616, transparent 50%, #161616)' }}
+        style={{ background: 'linear-gradient(to bottom, #161616, transparent 40%, #161616)' }}
       />
       <div className='absolute bottom-6 left-1/2 z-20 flex w-full -translate-x-1/2 transform flex-col items-center justify-center px-4'>
         <div className='flex w-[90%] items-center md:w-[80%] lg:w-[70%]'>

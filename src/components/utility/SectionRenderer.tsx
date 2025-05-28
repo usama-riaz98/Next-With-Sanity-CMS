@@ -1,5 +1,5 @@
 // src/components/utility/SectionRenderer.tsx
-import type { Page } from '@/sanity/types';
+import type { Page, SanityImage } from '@/sanity/types';
 import FeatureSection from '../sections/FeatureSection';
 import HomeHeroSection from '../sections/HomeHeroSection';
 
@@ -18,9 +18,7 @@ interface FeatureSectionProps {
   title: string;
   backgroundColor: { hex: string } | string;
   tocaTuesday: {
-    backgroundImage: Page['sections'][number] extends { _type: 'featureSection' }
-      ? Page['sections'][number]['tocaTuesday']['backgroundImage']
-      : never;
+    backgroundImage: SanityImage;
     title: string;
     description: string;
     buttonText: string;
@@ -28,9 +26,7 @@ interface FeatureSectionProps {
   };
   items: {
     title: string;
-    backgroundImage: Page['sections'][number] extends { _type: 'featureSection' }
-      ? Page['sections'][number]['items'][number]['backgroundImage']
-      : never;
+    backgroundImage: SanityImage;
     description: string;
     buttonText: string;
     buttonLink: { slug: { current: string } };
