@@ -1,25 +1,30 @@
-import { cn } from '@/libs/functions';
-import decodeSanityImage from '@/sanity/lib/decodeSanityImage';
+// src/components/utility/SanityImageBlock.tsx
 import type { SanityImage } from '@/sanity/types';
 import Image from 'next/image';
 
-export default function SanityImageBlock({
-  image,
-  ...props
-}: {
+interface SanityImageBlockProps {
+  fill?: boolean;
+  priority?: boolean;
   image: SanityImage;
-} & Omit<React.ComponentProps<typeof Image>, 'src' | 'alt'>) {
-  const sourceImage = decodeSanityImage(image);
-  const { fill, width, height, className } = props;
+  className?: string;
+  style?: React.CSSProperties;
+}
 
+export default function SanityImageBlock({ fill, priority, image, className, style }: SanityImageBlockProps) {
   return (
-    <Image
-      src={sourceImage.url}
-      className={cn(className)}
-      alt={image.alt || ''}
-      width={!fill ? width || sourceImage.dimensions.width : undefined}
-      height={!fill ? height || sourceImage.dimensions.height : undefined}
-      {...props}
-    />
+    <div className={className} style={style}>
+      {fill ? (
+        <Image src={image.asset.url} alt={image.alt || 'Image'} fill priority={priority} className='object-cover' />
+      ) : (
+        <Image
+          src={image.asset.url}
+          alt={image.alt || 'Image'}
+          width={800} // Adjust based on your needs
+          height={600}
+          priority={priority}
+          className='object-cover'
+        />
+      )}
+    </div>
   );
 }

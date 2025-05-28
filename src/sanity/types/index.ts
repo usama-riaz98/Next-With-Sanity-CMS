@@ -1,6 +1,12 @@
+// src/sanity/types/index.ts
 import type { SanityImageObject } from '@sanity/image-url/lib/types/types';
 
-export type SanityImage = SanityImageObject & {
+export type ResolvedSanityImageAsset = {
+  url: string;
+};
+
+export type SanityImage = Omit<SanityImageObject, 'asset'> & {
+  asset: ResolvedSanityImageAsset;
   alt?: string;
 };
 
@@ -53,4 +59,24 @@ type HomeHeroSection = BaseSection & {
   backgroundImage: SanityImage;
 };
 
-export type Section = HomeHeroSection;
+type FeatureSection = BaseSection & {
+  _type: 'featureSection';
+  title: string;
+  backgroundColor: { hex: string } | string;
+  tocaTuesday: {
+    backgroundImage: SanityImage;
+    title: string;
+    description: string;
+    buttonText: string;
+    buttonLink: { slug: { current: string } };
+  };
+  items: {
+    title: string;
+    backgroundImage: SanityImage;
+    description: string;
+    buttonText: string;
+    buttonLink: { slug: { current: string } };
+  }[];
+};
+
+export type Section = HomeHeroSection | FeatureSection;

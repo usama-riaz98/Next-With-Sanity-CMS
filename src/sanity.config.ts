@@ -1,5 +1,6 @@
 import { apiVersion, dataset, projectId } from '@/sanity/env';
 import { schemaTypes } from '@/sanity/schemas';
+import { colorInput } from '@sanity/color-input';
 import { visionTool } from '@sanity/vision';
 import { defineConfig, type SchemaTypeDefinition } from 'sanity';
 import { structureTool } from 'sanity/structure';
@@ -13,7 +14,7 @@ export default defineConfig({
   apiVersion,
   ignoreBrowserTokenWarning: true,
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [structureTool(), visionTool(), colorInput()],
 
   schema: {
     types: schemaTypes as SchemaTypeDefinition[],

@@ -1,3 +1,4 @@
+// src/sanity/lib/queries.ts
 import { defineQuery } from 'next-sanity';
 
 export const ROUTES_QUERY = defineQuery(`*[_type == "route"]`);
@@ -11,7 +12,51 @@ export const ROUTE_QUERY = defineQuery(`*[_type == "route" && slug.current == $s
       ...,
       sections[]{
         _type,
-        ...
+        _type == "homeHeroSection" => @ {
+          ...,
+          backgroundImage {
+            ...,
+            asset-> {
+              url
+            }
+          }
+        },
+        _type == "featureSection" => @ {
+          title,
+          backgroundColor,
+          tocaTuesday {
+            backgroundImage {
+              ...,
+              asset-> {
+                url
+              }
+            },
+            title,
+            description,
+            buttonText,
+            buttonLink-> {
+              slug {
+                current
+              }
+            }
+          },
+          items[] {
+            title,
+            backgroundImage {
+              ...,
+              asset-> {
+                url
+              }
+            },
+            description,
+            buttonText,
+            buttonLink-> {
+              slug {
+                current
+              }
+            }
+          }
+        }
       }
     }
   }`);
