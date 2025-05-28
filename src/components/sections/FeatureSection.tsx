@@ -35,7 +35,7 @@ export default function FeatureSection({ title, backgroundColor, tocaTuesday, it
   return (
     <section className='w-full py-12' style={{ backgroundColor: sectionBgColor }}>
       <div className='container mx-auto px-4'>
-        <h2 className='mb-8 text-center font-serif text-4xl text-white md:text-5xl'>{title}</h2>
+        <h2 className='mb-8 text-center font-serif text-[48px] text-white md:text-[140px]'>{title}</h2>
         <div className='relative mb-6 w-full'>
           <SanityImageBlock
             fill
