@@ -12,6 +12,7 @@ export const ROUTE_QUERY = defineQuery(`*[_type == "route" && slug.current == $s
       ...,
       sections[]{
         _type,
+        _key,
         _type == "homeHeroSection" => @ {
           ...,
           backgroundImage {
@@ -20,6 +21,18 @@ export const ROUTE_QUERY = defineQuery(`*[_type == "route" && slug.current == $s
               url
             }
           }
+        },
+        _type == "heroSection" => @ {
+          ...,
+          backgroundImage {
+            ...,
+            asset-> {
+              url
+            }
+          },
+          headingTop,
+          headingMiddle,
+          headingBottom
         },
         _type == "featureSection" => @ {
           title,
@@ -54,6 +67,151 @@ export const ROUTE_QUERY = defineQuery(`*[_type == "route" && slug.current == $s
               slug {
                 current
               }
+            }
+          }
+        },
+        _type == "tocaTuesdaySection" => @ {
+          ...,
+          backgroundImage {
+            ...,
+            asset-> {
+              url
+            }
+          },
+          title,
+          description,
+          buttonText,
+          buttonLink-> {
+            slug {
+              current
+            }
+          }
+        },
+        _type == "dualContentSection" => @ {
+          ...,
+          leftPanel {
+            backgroundImage {
+              ...,
+              asset-> {
+                url
+              }
+            },
+            title,
+            description,
+            buttonText,
+            buttonLink-> {
+              slug {
+                current
+              }
+            }
+          },
+          rightPanel {
+            backgroundImage {
+              ...,
+              asset-> {
+                url
+              }
+            },
+            title,
+            description,
+            buttonText,
+            buttonLink-> {
+              slug {
+                current
+              }
+            }
+          }
+        },
+        _type == "locationsSection" => @ {
+          ...,
+          title,
+          locations[] {
+            name,
+            backgroundImage {
+              ...,
+              asset-> {
+                url
+              }
+            },
+            buttonText,
+            buttonLink-> {
+              slug {
+                current
+              }
+            }
+          }
+        },
+        _type == "cocktailsSection" => @ {
+          ...,
+          title,
+          description,
+          buttonText,
+          buttonLink-> {
+            slug {
+              current
+            }
+          },
+          cocktails[] {
+            name,
+            image {
+              ...,
+              asset-> {
+                url
+              }
+            }
+          }
+        },
+        _type == "instagramSection" => @ {
+          ...,
+          title,
+          description,
+          instagramHandle,
+          images[] {
+            image {
+              ...,
+              asset-> {
+                url
+              }
+            },
+            link
+          }
+        },
+        _type == "footerSection" => @ {
+          ...,
+          navigationColumns[] {
+            title,
+            links[] {
+              label,
+              link-> {
+                slug {
+                  current
+                }
+              }
+            }
+          },
+          legalLinks[] {
+            label,
+            link-> {
+              slug {
+                current
+              }
+            }
+          },
+          socialLinks[] {
+            platform,
+            url
+          },
+          newsletterSection {
+            title,
+            description,
+            buttonText,
+            emailPlaceholder,
+            locationPlaceholder
+          },
+          logo {
+            ...,
+            asset-> {
+              url
             }
           }
         }
