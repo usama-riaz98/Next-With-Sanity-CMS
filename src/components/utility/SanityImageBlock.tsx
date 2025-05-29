@@ -1,3 +1,5 @@
+'use client';
+
 import urlFor from '@/sanity/lib/urlFor';
 import type { SanityImage } from '@/sanity/types';
 import Image from 'next/image';
